@@ -84,6 +84,17 @@ public class AddressBook implements AddressBookInterface {
             }
         }
     }
+    public void addMultiplePerson() {
+
+        System.out.println("Enter a person Name:");
+        String firstName = sc.nextLine();
+        for (int i = 0; i < contact.size(); i++) {
+            ContactDetails person = contact.get(i);
+            if (contact.get(i).getFname().equals(firstName)) {
+                System.out.println("Duplicate");
+            }
+        }
+    }
     public static void main(String[] args) {
     //main method
             System.out.println("Welcome to Address Book Program");
@@ -94,7 +105,8 @@ public class AddressBook implements AddressBookInterface {
             while (condition == true) {
                 Scanner scanner = new Scanner(System.in);
                 Scanner option = new Scanner(System.in);
-                System.out.println("1.Add Person" + "\n" + "2.Display" + "\n" + "3.Edit person" + "\n");
+                System.out.println("1.Add Person" + "\n" + "2.Display" + "\n" + "3.Edit person" + "\n"+"4.Delete person"
+                +"\n"+"5. Add MultipleContact");
 
                 switch (option.nextInt()) {
                     case 1:
@@ -112,6 +124,9 @@ public class AddressBook implements AddressBookInterface {
                         System.out.println("Enter the Name of the person do you wants to delete");
                         String name = scanner.nextLine();
                         adressBookObj.delete(name);
+                        break;
+                    case 5:
+                        adressBookObj.addMultiplePerson();
                         break;
                     default:
                         System.out.println("Thank You");
