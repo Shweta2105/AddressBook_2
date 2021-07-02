@@ -19,6 +19,9 @@ public class AddressBook {
                 "Paravti","Pune","Maharashtra","411044","97496089761","kiran@gmail.com"));
 
         System.out.println(contact);
+        //UC2 add new contact
+        contact.add(new ContactDetails("shubh","Prasad","Janakpuri","prayagraj","UP","986511","4567809898","shubh@labh.com"));
+        System.out.println(contact);
 
 
     }
