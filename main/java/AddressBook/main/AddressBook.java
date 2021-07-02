@@ -76,6 +76,14 @@ public class AddressBook implements AddressBookInterface {
         }
 
     }
+    private void delete(String name) {
+        for (int i = 0; i < contact.size(); i++) {
+            if (contact.get(i).getFname().equals(name)) {
+                ContactDetails person = contact.get(i);
+                contact.remove(person);
+            }
+        }
+    }
     public static void main(String[] args) {
     //main method
             System.out.println("Welcome to Address Book Program");
@@ -100,11 +108,17 @@ public class AddressBook implements AddressBookInterface {
                         String firstName = scanner.nextLine();
                         adressBookObj.edit(firstName);
                         break;
-
+                    case 4:
+                        System.out.println("Enter the Name of the person do you wants to delete");
+                        String name = scanner.nextLine();
+                        adressBookObj.delete(name);
+                        break;
                     default:
                         System.out.println("Thank You");
                         break;
                 }
             }
     }
+
+
 }
