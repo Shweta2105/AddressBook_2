@@ -1,5 +1,7 @@
 package AddressBook.main;
 
+import java.util.ArrayList;
+
 public class ContactDetails {
     private String fname;
     private String lname;
@@ -68,4 +70,14 @@ public class ContactDetails {
                 ", mail='" + mail + '\'' +
                 '}';
     }
+
+    public int findMobNo(ArrayList<ContactDetails> records, String phoneNumber) {
+        for (int i = 0; i < records.size(); i++) {
+            if (records.get(i).getMobno().equals(phoneNumber)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 }
