@@ -2,6 +2,7 @@ package AddressBook.main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class AddressBookInterface {
@@ -88,6 +89,19 @@ public class AddressBookInterface {
     }
     public void editAddressBook(HashMap<String, ArrayList<ContactDetails>> addressBooks, String addressBookName) {
         ArrayList<ContactDetails> records = addressBooks.get(addressBookName);
+    }
+    public int addressBookCheck(HashMap<String,ArrayList<ContactDetails>> addressbooks,String addressBookName) {
+        if (addressbooks.containsKey(addressBookName))
+            return 1;
+        else
+            return 0;
+    }
+    public static void searchByCity(List<ContactDetails> contact) {
+        System.out.println("Enter the city name to search contacts ");
+        Scanner scanner =new Scanner(System.in);
+        String city = scanner.nextLine();
+        contact.stream().filter(p ->p.getCity().equals(city)).forEach(System.out::println);
+
     }
 
 }

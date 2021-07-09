@@ -1,5 +1,6 @@
 package AddressBook.main;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +29,7 @@ public class AddressBook extends AddressBookInterface {
     }
 
     private void displayOptions() {
+        HashMap<String, ArrayList<ContactDetails>> addressbooks = new HashMap<String, ArrayList<ContactDetails>>();
         int option;
         int outerFlag = 0;
         while(outerFlag == 0) {
@@ -36,6 +38,8 @@ public class AddressBook extends AddressBookInterface {
             System.out.println("2 for display all address books");
             System.out.println("3 for edit person details in address book");
             System.out.println("4 for delete an address book");
+            System.out.println("5 for search in address books by city");
+            System.out.println("6 for search in address books by state");
             System.out.println("0 for exit");
             System.out.println("Enter your choice: ");
             option = scanner.nextInt();
@@ -49,7 +53,7 @@ public class AddressBook extends AddressBookInterface {
 
                 case 2:
                     System.out.println("Displaying all address book(s)..");
-                    displayAddressBooks(HashMap<String,ArrayList<contact>> );
+                    displayAddressBooks(addressbooks);
                     System.out.println("Name of address books you want view information in: ");
                     String name = scanner.nextLine();
 
@@ -67,11 +71,14 @@ public class AddressBook extends AddressBookInterface {
                 case 3:
                     System.out.println("Editing records in the address book..");
                     System.out.println("Displaying all address books");
-                    displayAddressBooks(HashMap<String,ArrayList<contact>>);
+                    displayAddressBooks(addressbooks);
                     System.out.println("Select from the address books list,");
                     System.out.println("Name of address books you want to alter information in: ");
                     String addressBookName = scanner.nextLine();
-
+                    if (addressBookCheck(addressbooks,addressBookName)!= 1) {
+                        System.out.println("No record(s) found.");
+                        break;
+                    }
 
                     int choice;
                     int innerflag = 0;
@@ -206,6 +213,19 @@ public class AddressBook extends AddressBookInterface {
                     System.out.println("Name of address books you want to delete: ");
                     String addressBookNameD = scanner.nextLine();
                     break;
+                case 5:
+                    System.out.println("Searching by city..");
+                    System.out.println("Name of address books want to search information in : ");
+                    scanner.nextLine();
+                    String addressBookNameS = scanner.nextLine();
+                    if (addressBookCheck(addressbooks,addressBookNameS)!= 1) {
+                        System.out.println("Np record(s) found ");
+                        break;
+                    } else  {
+                        List<ContactDetails> contactDetails = addressbooks.get(addressBookNameS);
+                        searchByCity(contactDetails);
+                        break;
+                    }
 
                 case 0:
                     outerFlag = 1;
@@ -218,6 +238,7 @@ public class AddressBook extends AddressBookInterface {
 
     }
  }
+
 
 
 
