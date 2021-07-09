@@ -103,5 +103,12 @@ public class AddressBookInterface {
         contact.stream().filter(p ->p.getCity().equals(city)).forEach(System.out::println);
 
     }
+    public static void searchByState(List<ContactDetails> contact) {
+        System.out.println("Enter the city name to search contacts ");
+        Scanner scanner =new Scanner(System.in);
+        String state = scanner.nextLine();
+        contact.stream().filter(p ->p.getCity().equals(state)).forEach(System.out::println);
+
+    }
 
 }

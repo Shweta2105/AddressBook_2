@@ -226,6 +226,19 @@ public class AddressBook extends AddressBookInterface {
                         searchByCity(contactDetails);
                         break;
                     }
+                case 6:
+                    System.out.println("Searching by state..");
+                    System.out.println("Name of address books want to search information in : ");
+                    scanner.nextLine();
+                    String addressBookNameE = scanner.nextLine();
+                    if (addressBookCheck(addressbooks,addressBookNameE)!= 1) {
+                        System.out.println("Np record(s) found ");
+                        break;
+                    } else {
+                        List<ContactDetails> contactDetails = addressbooks.get(addressBookNameE);
+                        searchByState(contactDetails);
+                        break;
+                    }
 
                 case 0:
                     outerFlag = 1;
