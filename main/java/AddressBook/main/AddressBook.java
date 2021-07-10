@@ -40,6 +40,8 @@ public class AddressBook extends AddressBookInterface {
             System.out.println("4 for delete an address book");
             System.out.println("5 for search in address books by city");
             System.out.println("6 for search in address books by state");
+            System.out.println("7 for count contacts in address books by city");
+            System.out.println("8 for count contacts in address books by state");
             System.out.println("0 for exit");
             System.out.println("Enter your choice: ");
             option = scanner.nextInt();
@@ -237,6 +239,32 @@ public class AddressBook extends AddressBookInterface {
                     } else {
                         List<ContactDetails> contactDetails = addressbooks.get(addressBookNameE);
                         searchByState(contactDetails);
+                        break;
+                    }
+                case 7:
+                    System.out.println("Searching by city..");
+                    System.out.println("Name of address books want to search information in : ");
+                    scanner.nextLine();
+                    String addressBkNameCount = scanner.nextLine();
+                    if (addressBookCheck(addressbooks,addressBkNameCount)!= 1) {
+                        System.out.println("Np record(s) found ");
+                        break;
+                    } else {
+                        List<ContactDetails> contactDetails = addressbooks.get(addressBkNameCount);
+                        countByCity(contactDetails);
+                        break;
+                    }
+                case 8:
+                    System.out.println("Searching by state..");
+                    System.out.println("Name of address books want to search information in : ");
+                    scanner.nextLine();
+                    String addressBookNameCount = scanner.nextLine();
+                    if (addressBookCheck(addressbooks,addressBookNameCount)!= 1) {
+                        System.out.println("Np record(s) found ");
+                        break;
+                    } else {
+                        List<ContactDetails> contactDetails = addressbooks.get(addressBookNameCount);
+                        countByState(contactDetails);
                         break;
                     }
 

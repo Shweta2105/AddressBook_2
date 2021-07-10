@@ -110,5 +110,20 @@ public class AddressBookInterface {
         contact.stream().filter(p ->p.getCity().equals(state)).forEach(System.out::println);
 
     }
+    public static void countByCity(List<ContactDetails> contact) {
+        System.out.println("Enter the city name to count the contacts : ");
+        Scanner scanner = new Scanner(System.in);
+        String city = scanner.next();
+        Long countNamesByCity = contact.stream().filter(e -> city.equals(e.getCity())).count();
+        System.out.println(city + ":"+ countNamesByCity);
+    }
+    public static void countByState(List<ContactDetails> contact) {
+        System.out.println("Enter the state name to count the contacts : ");
+        Scanner scanner = new Scanner(System.in);
+        String state = scanner.next();
+        Long countNamesByCity = contact.stream().filter(e -> state.equals(e.getState())).count();
+        System.out.println(state + ":"+ countNamesByCity);
+
+    }
 
 }
